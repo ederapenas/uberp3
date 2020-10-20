@@ -19,6 +19,8 @@ public interface I_Uber {
 	
 	public List<String> listarPassageiros();
 	
+	public List<String> listarPassageirosEspeciais();
+	
 	public List<String> listarCorridas(int telefone);
 
 	public static I_Uber getInstance() {
