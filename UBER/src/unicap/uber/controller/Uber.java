@@ -102,6 +102,10 @@ public class Uber implements I_Uber{
 	public List<String> listarPassageiros() {
 		return listarUsuario(passageiros);
 	}
+	
+	public list<String> listarPassageirosEspeciais() {
+		return listarUsuario(especiais);
+	}
 
 	private List<String> listarUsuario(List<? extends Usuario> usuarios) {
 		List<String> mensagens = new LinkedList<String>();
