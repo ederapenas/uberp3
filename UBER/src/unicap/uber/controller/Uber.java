@@ -16,6 +16,7 @@ public class Uber implements I_Uber{
 	private List<Motorista> motoristas = new ArrayList<Motorista>();
 	private List<Passageiro> passageiros = new LinkedList<Passageiro>();
 	private List<Corrida> corridas = new LinkedList<Corrida>();
+	private List<PassageiroEspecial> especiais = new LinkedList<PassageiroEspecial>();
 	
 	public void adicionaMotorista(String nome, String modelo, int telefone, int placa) throws NumeroExisteException, PlacaExisteException {
 		for (Motorista m : motoristas) {
@@ -32,14 +33,26 @@ public class Uber implements I_Uber{
 	
 	public void adicionaPassageiro(String nome, int telefone, boolean especial) throws NumeroExisteException {
 		
-		for (Passageiro p : passageiros) {
-			if(p.getTelefone() == telefone) {
-				throw new NumeroExisteException(telefone);
+		if(especial==false){
+			for(Passageiro p : passageiros){
+				if(p.getTelefone() == telefone){
+					throw new NumeroExisteException(telefone);
+				}
 			}
+			Passageiro p = new Passageiro(nome, telefone);
+			passageiros.add(p);
+		}
+			
+		else{
+			for(PassageiroEspecial p : especiais){
+				if(p.getTelefone() == telefone){
+					throw new NumeroExisteException(telefone);
+				}
+			}
+			PassageiroEspecial p = new PassageiroEspecial(nome, telefone);
+			especiais.add(p);
 		}
 		
-		Passageiro p =new Passageiro(nome, telefone);
-		passageiros.add(p);
 	}
 
 	public double solicitarCorrida(int telefone, String origem, String destino) {
