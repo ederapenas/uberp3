@@ -12,8 +12,16 @@ public class PassageiroEspecial extends Usuario implements IPassageiro {
 		pontos = 0;
 	}
 	
+	public setPontos(){
+		this.pontos++;
+	}
+	
+	public getPontos(){
+		return this.pontos;
+	}
+	
 	@Override
 	public String toString() {
-		return "Passageiro "+getNome();
+		return "Passageiro "+ getNome() + "\nPontos: " + getPontos();
 	}
 }
