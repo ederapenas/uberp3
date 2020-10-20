@@ -23,8 +23,7 @@ public class Aplicacao {
 		System.out.println("4 - Lista Motorista.");
 		System.out.println("5 - Lista Passageiros.");
 		System.out.println("6 - Lista Corridas.");
-		System.out.println("7 - Novo Passageiro Especial (Acumula pontos a cada corrida)");
-		System.out.println("8 - Lista Passageiros Especiais.");
+		System.out.println("7 - Lista Passageiros Especiais.");
 		System.out.println("0 - Encerrar o programa.");
 		int opcao = s.nextInt();
 		s.nextLine();
@@ -65,11 +64,30 @@ public class Aplicacao {
 				System.out.println("Digite um telefone");
 				int telefone = s.nextInt();
 				s.nextLine();
-				try {
-					logica.adicionaPassageiro(nome, telefone, false);
-					System.out.println("Passageiro cadastrado com sucesso.");
-				} catch (NumeroExisteException e) {
-					System.out.println("Numero já cadastrado "+e.getNumero()".");
+				System.out.println("Deseja tornar o passageiro especial? Ele acumulará pontos a cada corrida.");
+				System.out.println("1- Sim");
+				System.out.println("2 - Não.");
+				int op = s.nextInt();
+				while(op != 1 && op != 2){
+				System.out.println("Valor inválido. Digite 1 para sim ou 2 para não:")
+				op = s.nextInt();
+				}
+				s.nextLine();
+				
+				if(op == 1){
+					try{
+						logica.adicionaPassageiro(nome, telefone, true);
+						System.out.println("Passageiro especial cadastrado com sucesso.");
+					} catch(NumeroExistenteException e) {
+						System.out.println("Numero já cadastrado " + e.getNumero()".");
+				}
+				else{
+					try{
+						logica.adicionaPassageiro(nome, telefone, false);
+						System.out.println("Passageiro cadastrado com sucesso.");
+					} catch(NumeroExisteException e) {
+						System.out.println("Numero já cadastrado " + e.getNumero()".");
+					}
 				}
 				break;
 			}
@@ -119,12 +137,8 @@ public class Aplicacao {
 				String nome = s.nextLine();
 				System.out.println("Digite o número do telefone do passageiro:");
 				int telefone = s.nextInt();
-				
-				
-				break;
-			}
-			case 8:{
-				
+				try{
+					
 				
 				break;
 			}
