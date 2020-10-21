@@ -33,6 +33,7 @@ public class Aplicacao {
 	public static void main(String[] args) {
 		I_Uber logica = UberNovo.getInstance();
 		int opcao;
+		boolean especial;
 		do {
 			opcao = menu();
 			
@@ -133,13 +134,12 @@ public class Aplicacao {
 				break;
 			}
  			case 7: {
-				System.out.println("Digite o nome do passageiro:");
-				String nome = s.nextLine();
-				System.out.println("Digite o número do telefone do passageiro:");
-				int telefone = s.nextInt();
-				try{
-					
+				System.out.println("Lista de passageiros especiais:");
 				
+				List<String> e = logica.listarPassageirosEspeciais();
+				for(String umaMensagem : e){
+					System.out.println(umaMensagem);
+				}
 				break;
 			}
 			case 0:{
